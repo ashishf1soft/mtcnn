@@ -64,7 +64,7 @@ class MTCNN(object):
         b) Detection of keypoints (left eye, right eye, nose, mouth_left, mouth_right)
     """
 
-    def __init__(self, weights_file: str = None, min_face_size: int = 20, steps_threshold: list = None,
+    def __init__(self, weights_file: str = None, min_face_size: int = 1, steps_threshold: list = None,
                  scale_factor: float = 0.709):
         """
         Initializes the MTCNN.
@@ -91,11 +91,11 @@ class MTCNN(object):
         return self._min_face_size
 
     @min_face_size.setter
-    def min_face_size(self, mfc=20):
+    def min_face_size(self, mfc=1):
         try:
             self._min_face_size = int(mfc)
         except ValueError:
-            self._min_face_size = 20
+            self._min_face_size = 1
 
     def __compute_scale_pyramid(self, m, min_layer):
         scales = []
